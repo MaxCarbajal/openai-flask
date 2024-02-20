@@ -2,20 +2,11 @@ from flask import Flask, render_template, request
 import openai
 
 app = Flask(__name__)
-openai.api_key = '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'
+openai.api_key = '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'
 
 conversations = []
 
 ## rutas
-# principal
-# @app.route('/')
-# def raiz():
-#     return render_template('inicio.html')
-
-# ruta nosotros
-@app.route('/nosotros')
-def nosotros():
-    return render_template('nosotros.html')
 
 # ruta uso api
 @app.route('/', methods=['GET', 'POST'])
@@ -47,6 +38,11 @@ def openai_api():
             conversations.append(answer)
 
         return render_template('index.html', chat = conversations)
+
+# ruta nosotros
+@app.route('/nosotros')
+def nosotros():
+    return render_template('nosotros.html')
 
 # bloque de prueba
 if __name__ == '__main__':
