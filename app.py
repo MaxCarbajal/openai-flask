@@ -7,7 +7,6 @@ openai.api_key = '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'
 conversations = []
 
 ## rutas
-
 # ruta uso api
 @app.route('/', methods=['GET', 'POST'])
 def openai_api():
