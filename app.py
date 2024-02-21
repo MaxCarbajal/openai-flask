@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request
-import openai
+from openai import OpenAI
+import os
 
 app = Flask(__name__)
-openai.api_key = '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'
 
+client = OpenAI()
 conversations = []
 
 ## rutas
@@ -17,7 +18,7 @@ def openai_api():
         question = request.form.get('question')
 
         if question:
-            response = openai.ChatCompletion.create(
+            response = client.chat.completions.create(
                 model = 'gpt-3.5-turbo-0125',
                 messages= [
                     {"role": "system", "content": ""},
