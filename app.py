@@ -5,6 +5,7 @@ import os
 app = Flask(__name__)
 
 client = OpenAI()
+
 conversations = []
 
 ## rutas
@@ -38,6 +39,12 @@ def openai_api():
             conversations.append(answer)
 
         return render_template('index.html', chat = conversations)
+
+# limpiar conversacion
+@app.route('/limpiar_conversation', methods=['POST'])
+def limpiar_array():
+    conversations.clear()
+    return render_template('index.html')
 
 # ruta nosotros
 @app.route('/nosotros')
